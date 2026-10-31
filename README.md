@@ -1,10 +1,18 @@
-# CrewDeck v0.4 — ABX official login link test
+# CrewDeck v0.5 — Roster Engine prototype
 
-This version replaces the experimental credential-forwarding Netlify Function with a link to the official ABX NetLine login.
+Preserves v0.4 Aviation Premium design and official ABX portal link.
 
-- Click **Sign in with ABX** to open the official ABX site in a new tab.
-- Enter your username/password **only on the official ABX site**.
-- Login to ABX does **not** authenticate CrewDeck or import a roster. All CrewDeck roster content is fictional demo data.
-- The old `netlify/functions/login.mjs` has been removed; **delete it from your GitHub repository too** when deploying this version.
-- Upload all files at repository root; Netlify publish directory `.`.
-- This test does not require an OIDC client registration. Full integration will require ABX-approved authorization and a dedicated redirect URI/client.
+## New
+- Roster tab: local JSON parser for `result.events` NetLine/IADP-shaped responses.
+- Shows event IDs, airport codes, UTC timestamps and sanitized details in a local scrollable list.
+- File stays in browser memory; no upload, backend, persistence, or ABX authentication.
+- Clear imported data button. Limit 8 MB / 20,000 events; first 200 displayed.
+
+## Important limitations
+- **No automatic roster synchronization yet.** Official ABX link opens in a separate tab.
+- Main dashboard, calendar, flights and crew remain **fictional demonstration data**, and are not populated from JSON.
+- Do not publish actual corporate roster exports. Follow ABX policy.
+- A production integration requires an ABX-authorized authentication/data access mechanism.
+
+## Deploy
+Replace repository root files with this package, commit and wait for Netlify deployment. No Netlify functions are needed.
